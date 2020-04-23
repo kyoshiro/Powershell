@@ -9,6 +9,16 @@
 #
 # For detailed Posh-Git description see documentation at: 
 # https://github.com/dahlbyk/posh-git
+#
+# Prerequisits:
+# Install-PackageProvider NuGet -Force
+# Import-PackageProvider NuGet -Force
+# Install-Module -Name PowerShellGet -Force
+# Import-Module -Name PowerShellGet
+#
+# Install Posh-Git
+# PowerShellGet\Install-Module -Name posh-git -Force
+# Enable and Autostart OpenSSH-Agent Service
 
 # Directory shortcut functions
 function cd_git {
