@@ -1,7 +1,12 @@
 # Personal VSCode PowerShell Profile
 # Author: Roman Asendorf
-# 
-# See Posh-Git documentation at: 
+#
+# Features:
+# - Aliases for useful directory and command shortcuts
+# - Prompt modification similar to bash
+# - Prompt modification with Git Prompt integration based on Posh-Git
+#
+# For detailed Posh-Git description see documentation at: 
 # https://github.com/dahlbyk/posh-git
 
 # Directory shortcut functions
@@ -50,7 +55,17 @@ Set-Alias -Name vsus -Value vagrant_suspend
 Set-Alias -Name vup -Value vagrant_up
 
 # Modifying the Prompt with Posh-Git
-Import-Module -Name posh-git
+
+[bool] $PoshGitAvailable = $False
+
+if(!(Get-Module -ListAvailable -Name posh-git)) {
+    Write-Host "The Module 'Posh-Git' is not installed. Git Prompt will not work without it."
+    Write-Host "Install 'Posh-Git' from https://github.com/dahlbyk/posh-git"
+    Write-Host "Continuing without Git Prompt for the moment."
+} else {
+    Import-Module -Name posh-git
+    $PoshGitAvailable = $True
+}
 
 # Adding SSH Key to SSH Agent
 Start-SshAgent
@@ -171,7 +186,9 @@ function prompt {
     #Write-Host (Get-Date -Format G) -NoNewline -ForegroundColor Magenta
  
     $global:LASTEXITCODE = $realLASTEXITCODE
-    Write-VcsStatus
+    If($PoshGitAvailable){
+        Write-VcsStatus
+    }
     Write-Host "" -NoNewline
     return "> "
 }
