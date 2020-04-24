@@ -41,6 +41,9 @@ function vagrant_destroy {
 function vagrant_resume {
     vagrant resume $args
 }
+function vagrant_ssh {
+    vagrant ssh $args
+}
 function vagrant_status {
     vagrant status $args
 }
@@ -61,6 +64,7 @@ Set-Alias -Name cdtf -Value cd_p_terraform
 
 Set-Alias -Name vdes -Value vagrant_destroy
 Set-Alias -Name vres -Value vagrant_resume
+Set-Alias -Name vssh -Value vagrant_ssh
 Set-Alias -Name vstat -Value vagrant_status
 Set-Alias -Name vsus -Value vagrant_suspend
 Set-Alias -Name vup -Value vagrant_up
