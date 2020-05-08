@@ -69,6 +69,9 @@ Set-Alias -Name vstat -Value vagrant_status
 Set-Alias -Name vsus -Value vagrant_suspend
 Set-Alias -Name vup -Value vagrant_up
 
+# Enable Emacs ReadLine
+Set-PSReadlineOption -EditMode Emacs
+
 # Modifying the Prompt with Posh-Git
 
 [bool] $PoshGitAvailable = $False
