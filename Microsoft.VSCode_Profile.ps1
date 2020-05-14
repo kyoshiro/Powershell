@@ -56,6 +56,9 @@ function vagrant_suspend {
 function vagrant_up {
     vagrant up $args
 }
+function terraform_fmt {
+    terraform fmt --recursive
+}
 
 # Alias Definitions
 Set-Alias -Name less -Value Get-Content
@@ -74,6 +77,7 @@ Set-Alias -Name vsus -Value vagrant_suspend
 Set-Alias -Name vup -Value vagrant_up
 
 Set-Alias -Name tf -Value terraform
+Set-Alias -Name tfmt -Value terraform_fmt
 
 # Enable Emacs ReadLine
 Set-PSReadlineOption -EditMode Emacs
