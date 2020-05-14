@@ -56,9 +56,6 @@ function vagrant_suspend {
 function vagrant_up {
     vagrant up $args
 }
-function terraform {
-    terraform $args
-}
 
 # Alias Definitions
 Set-Alias -Name less -Value Get-Content
