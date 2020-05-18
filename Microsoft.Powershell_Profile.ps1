@@ -201,11 +201,13 @@ function prompt {
     #$Host.UI.RawUI.ForegroundColor = White
 
     if (Test-Administrator) {  # Use different username if elevated
-       Write-Host "(Elevated) " -NoNewline -ForegroundColor White
+        Write-Host "(Elevated) " -NoNewline -ForegroundColor White
+        Write-Host "$ENV:USERNAME@" -NoNewline -ForegroundColor Red
+        Write-Host "$ENV:COMPUTERNAME " -NoNewline -ForegroundColor Red
+    } else {
+        Write-Host "$ENV:USERNAME@" -NoNewline -ForegroundColor Green
+        Write-Host "$ENV:COMPUTERNAME " -NoNewline -ForegroundColor Green
     }
-
-    Write-Host "$ENV:USERNAME@" -NoNewline -ForegroundColor Green
-    Write-Host "$ENV:COMPUTERNAME " -NoNewline -ForegroundColor Green
 
     if ($s -ne $null) {  # color for PSSessions
         Write-Host " (`$s: " -NoNewline -ForegroundColor DarkGray
